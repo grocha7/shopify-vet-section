@@ -1,0 +1,172 @@
+<section class="veterinarian-section">
+  <div class="container">
+    <div class="image-container">
+      <img src="{{ section.settings.main_image | image_url }}" 
+           alt="Veterinarian image" 
+           class="main-image" 
+           width="auto" 
+           height="auto">
+      <img src="{{ section.settings.badge_image | image_url }}" 
+           alt="Veterinarian Approved Badge" 
+           class="vet-badge {{ section.settings.badge_position }}" 
+           width="auto" 
+           height="auto">
+    </div>
+    <article class="text-container">
+      <h2 class="doctor-name">{{ section.settings.doctor_name }}</h2>
+      <h3 class="headline">{{ section.settings.headline }}</h3>
+      <p class="body-text">{{ section.settings.body_text }}</p>
+      <div class='button-wrapper'><a href="{{ section.settings.button_url }}" class="vet-button" aria-label="View Products">{{ section.settings.button_text }}</a> </div>
+    </article>
+  </div>
+</section>
+
+<style>
+    .veterinarian-section {
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+    .image-container {
+      position: relative;
+    }
+    .main-image {
+      width: 100%;
+      height: auto;
+    }
+    .vet-badge {
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      @media (min-width: 1024px) {
+        width: 150px;
+        height: 150px;
+      }
+    }
+    .top-left {
+      top: 5px;
+      left: 5px;
+    }
+    .top-right {
+      top: 5px;
+      right: 5px;
+    }
+    .bottom-left {
+      bottom: 5px;
+      left: 5px;
+    }
+    .bottom-right {
+      bottom: 5px;
+      right: 5px;
+    }
+    .text-container {
+      
+    }
+    .doctor-name {
+      font-size: 1.2em;
+      color: orange;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+    .headline {
+      font-size: 2.0em;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+    .body-text {
+      font-size: 1em;
+      margin: 20px 0;
+      color: #000;
+    }
+    .vet-button {
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      width: 95%;
+      max-width: 420px;
+      display: grid;
+      justify-content: center;
+      border-radius: 10px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+
+{% schema %}
+{
+  "name": "Vet Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_image",
+      "label": "Badge Image"
+    },
+    {
+      "type": "select",
+      "id": "badge_position",
+      "label": "Badge Position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        }
+      ],
+      "default": "top-left"
+    },
+    {
+      "type": "text",
+      "id": "doctor_name",
+      "label": "Doctor's Name",
+      "default": "Dr. Ernie Sanderson"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Veterinarian-Approved"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body Text",
+      "default": "All products from Dr. Ernie's are vetted and approved by a qualified veterinarian, ensuring top-quality care for your pet."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "View Products"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ]
+}
+{% endschema %}
